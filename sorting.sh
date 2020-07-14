@@ -1,5 +1,24 @@
 #! /bin/bash
 declare -A operations
+function sort()
+{
+        arr=("$@")
+        n=${#arr[@]}
+        for ((i = 0; i<n; i++))
+        do
+                for((j = 0; j<n-i-1; j++))
+                do
+                        if [ ${arr[j]} -lt ${arr[$((j+1))]} ]
+                        then
+                                temp=${arr[j]}
+                                arr[$j]=${arr[$((j+1))]}
+                                arr[$((j+1))]=$temp
+                        fi
+                done
+        done
+        echo "Array in descending order is:"${arr[@]}
+}
+
 read -p "Enter value of a: " a
 read -p "Enter value of b: " b
 read -p "Enter value of c: " c
@@ -27,3 +46,6 @@ do
         array[((counter++))]=${operations[$index]}
 done
 echo ${array[@]}
+
+sort ${array[@]}
+
