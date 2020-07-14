@@ -21,3 +21,9 @@ do
         echo $index":"${operations[$index]}
 done
 
+counter=0
+for index in ${!operations[@]}
+do
+        array[((counter++))]=${operations[$index]}
+done
+echo ${array[@]}
