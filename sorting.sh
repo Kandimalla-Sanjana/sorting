@@ -1,4 +1,5 @@
 #! /bin/bash
+declare -A operations
 read -p "Enter value of a: " a
 read -p "Enter value of b: " b
 read -p "Enter value of c: " c
@@ -19,8 +20,10 @@ for index in ${!operations[@]}
 do
         echo $index":"${operations[$index]}
 done
+
 counter=0
 for index in ${!operations[@]}
 do
         array[((counter++))]=${operations[$index]}
 done
+echo ${array[@]}
